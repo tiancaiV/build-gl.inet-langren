@@ -24,7 +24,8 @@ on:
         description: '是否包含官方UI (目前支持IPQ6018系列、mt7981系列和GL-A1300)'
         required: false
         type: boolean
-        
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-20.04
