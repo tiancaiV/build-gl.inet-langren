@@ -58,7 +58,7 @@ function build_firmware(){
     if [[ $need_gl_ui == true  ]]; then 
         make -j$(expr $(nproc) + 1) GL_PKGDIR=~/glinet/$ui_path/ V=s
     else
-        make -j$(expr $(nproc) + 1)  V=s
+        make -j$(expr $(nproc) + 1) V=s
     fi
     return
 }
@@ -153,6 +153,12 @@ case $profile in
             ./scripts/gen_config.py $profile openwrt_common glinet_nas luci custom
         fi
         build_firmware $ui ath79 && copy_file ~/openwrt/bin/targets/*/*
+    ;;
+    target_ath79_gl-x300b-nor)
+        python3 setup.py -c configs/config-22.03.2.yml
+        ln -s $base/gl-infra-builder/openwrt-22.03/openwrt-22.03.2 ~/openwrt && cd ~/openwrt
+        ./scripts/gen_config.py $profile luci custom
+        build_firmware && copy_file ~/openwrt/bin/targets/*/*
     ;;
 esac
 

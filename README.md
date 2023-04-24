@@ -1,4 +1,5 @@
 # GL.iNet路由器官方开源固件快捷编译
+### ⚠⚠WARNING⚠⚠ 由于编译过程产生的文件太大，可能会超过github action允许使用的最大磁盘空间（15G），建议有条件的使用本地编译
 ## 支持设备
 * GL-AX1800
 * GL-AXT1800
@@ -9,6 +10,7 @@
 * GL-MT1300
 * GL-MT3000
 * GL-S200
+* GL-X300B
 
 ## 仓库说明
 * 本仓库使用的源码基于GL.iNet官方开源仓库[gl-inet/gl-infra-builder](https://github.com/gl-inet/gl-infra-builder)，性能及稳定性请自行测试。
@@ -49,3 +51,4 @@ cd build-gl.inet
 |target_siflower_gl-sft1200|GL-SFT1200|
 |target_ramips_gl-mt1300|GL-MT1300|
 |target_ath79_gl-s200|GL-S200|
+|target_ath79_gl-x300b-nor|GL-X300B|

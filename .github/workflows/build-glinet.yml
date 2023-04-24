@@ -25,6 +25,7 @@ on:
         - target_siflower_gl-sft1200
         - target_ramips_gl-mt1300
         - target_ath79_gl-s200
+        - target_ath79_gl-x300b-nor
 
       ui:
         description: '是否包含官方UI (目前支持IPQ6018系列、mt7981系列、GL-A1300和GL-S200)'
@@ -45,8 +46,12 @@ jobs:
       run: |
         sudo apt update
         sudo apt install python build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml subversion -y
-        git config --global user.email "aa@163.com"
-        git config --global user.name "aa"
+        sudo apt autoclean
+        sudo apt autoremove --purge
+        sudo rm -rf /usr/share/dotnet
+        sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+        git config --global user.email "shi05275@163.com"
+        git config --global user.name "JiaY-shi"
     - name: make 
       run: |
         ./build.sh ~ ${{ inputs.device }} ${{ inputs.ui }} ${{ inputs.tag_main }} ${{ inputs.tag_no }}
